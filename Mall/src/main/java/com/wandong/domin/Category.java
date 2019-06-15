@@ -2,7 +2,7 @@ package com.wandong.domin;
 
 import java.io.Serializable;
 
-public class Type implements Serializable
+public class Category implements Serializable
 {
 	private String cid;
 	private String cname;

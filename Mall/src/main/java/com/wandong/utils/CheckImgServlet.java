@@ -46,9 +46,9 @@ public class CheckImgServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// 禁止缓存
-		// response.setHeader("Cache-Control", "no-cache");
-		// response.setHeader("Pragma", "no-cache");
-		// response.setDateHeader("Expires", -1);
+		 response.setHeader("Cache-Control", "no-cache");
+		 response.setHeader("Pragma", "no-cache");
+		 response.setDateHeader("Expires", -1);
 
 		int width = 120;
 		int height = 30;

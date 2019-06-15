@@ -12,7 +12,7 @@
 </head>
 <body>
 <h5>SSM环境搭建测试</h5>
-<a href="account/test">1点击测试</a><br>
+<jsp:forward page="jsp/index.jsp"></jsp:forward>
 </form>
 </body>
 </html>
