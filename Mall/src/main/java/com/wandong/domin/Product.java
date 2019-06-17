@@ -10,7 +10,7 @@ public class Product {
 	private String is_hot;
 	private String pdesc;
 	private String pflag;
-	private String cid;
+	private Category category;
 
 	public String getPid() {
 		return pid;
@@ -84,12 +84,11 @@ public class Product {
 		this.pflag = pflag;
 	}
 
-	public String getCid() {
-		return cid;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCid(String cid) {
-		this.cid = cid;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
-
 }

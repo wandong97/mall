@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
@@ -44,12 +44,12 @@ body {
 	<div class="row" style="width:1210px;margin:0 auto;">
 		<div class="col-md-12">
 			<ol class="breadcrumb">
-				<li><a href="#">首页</a></li>
+				<li><a href="#">首页>>>>>>${pagebean.list[0].category.cname}</a></li>
 			</ol>
 		</div>
-		<c:forEach items="${pagebean.productList}" var="pro">
+		<c:forEach items="${pagebean.list}" var="pro">
 			<div class="col-md-2">                                              
-				<a href="${pageContext.request.contextPath}/productServlet?todo=findDetailedproduct&pid=${pro.pid}"> <img
+				<a href="${pageContext.request.contextPath}/product/findById/?pid=${pro.pid}"> <img
 					src="${pageContext.request.contextPath}/${pro.pimage}" width="170"
 					height="170" style="display: inline-block;">
 				</a>
@@ -65,15 +65,20 @@ body {
 		<!--分页 -->
 		<div style="width:380px;margin:0 auto;margin-top:50px;">
 			<ul class="pagination" style="text-align:center; margin-top:10px;">
-				<c:forEach begin="1" end="${pagebean.totalPage}" var="page">
-					<c:if test="${pagebean.currentPage==page}">
+				<c:forEach begin="1" end="${pagebean.pages}" var="page">
+					<c:if test="${pagebean.pageNum==page}">
 						<li class="active"><a href="javascript:void(0)">${page}</a></li>
 					</c:if>
-					<c:if test="${pagebean.currentPage!=page}">
+					<c:if test="${pagebean.pageNum!=page}">
 						<li><a
-							href="${pageContext.request.contextPath}/productServlet?currentPage=${page}&todo=findProductList&cid=${cid}">${page}</a></li>
+							href="${pageContext.request.contextPath}/product/findAll?pageNum=${page}&cid=${pagebean.list[0].category.cid}">${page}</a></li>
 					</c:if>
 				</c:forEach>
+				<li>
+					<a href="${pageContext.request.contextPath}/product/findAll?pageNum=${pagebean.nextPage}&cid=${pagebean.list[0].category.cid}" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
 				<!--  <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
 				<li class="active"><a href="#">1</a></li>
 				<li><a href="#">2</a></li>
@@ -99,7 +104,7 @@ body {
 		<div
 			style="width:1210px;margin:0 auto; padding: 0 9px;border: 1px solid #ddd;border-top: 2px solid #999;height: 246px;">
 
-			<h4 style="width: 50%;float: left;font: 14px/30px "微软雅黑 ";">浏览记录</h4>
+			<h4 style="width: 50%;float: left;font:14px/30px "微软雅黑 ";">浏览记录</h4>
 			<div style="width: 50%;float: right;text-align: right;">
 				<a href="">more</a>
 			</div>

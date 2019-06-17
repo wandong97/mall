@@ -19,13 +19,22 @@ public class ProductController {
 
     @RequestMapping("/findAll")
     public ModelAndView findAll(@RequestParam(required = true) String cid,
-                                @RequestParam(required = false,defaultValue ="1",name = "pageNum") int pageNum,
-                                @RequestParam(required = false,defaultValue = "12",name = "pageSize") int pageSize) {
+                                @RequestParam(required = false, defaultValue = "1", name = "pageNum") int pageNum,
+                                @RequestParam(required = false, defaultValue = "12", name = "pageSize") int pageSize) {
         ModelAndView mv = new ModelAndView();
-        List<Product> productList = productService.findAll(cid,pageNum,pageSize);
+        List<Product> productList = productService.findAll(cid, pageNum, pageSize);
         PageInfo pageBean = new PageInfo(productList);
-        mv.addObject("pageBean",pageBean);
+        mv.addObject("pagebean", pageBean);
         mv.setViewName("product_list");
-        return  mv;
+        return mv;
+    }
+
+    @RequestMapping("findById")
+    public ModelAndView findById(@RequestParam(required = true, name = "pid") String pid) {
+        ModelAndView mv = new ModelAndView();
+        Product product = productService.findById(pid);
+        mv.addObject("aProduct", product);
+        mv.setViewName("product_info");
+        return mv;
     }
 }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface ProductService {
     List<Product> findAll(String cid,int pageNum,int pageSize);
+
+    Product findById(String pid);
 }

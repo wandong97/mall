@@ -44,6 +44,14 @@
             padding-right: 17px;
         }
     </style>
+    <script>
+        function  changeimg(){
+            var myDate = new Date();
+                var img =document.getElementById('img1');
+                img.src="${pageContext.request.contextPath}/checkImageServlet?ran=" + Math.random();
+        }
+
+    </script>
 </head>
 <body>
 
@@ -119,7 +127,7 @@
                         <input type="text" class="mima inputs" placeholder="验证码" id="cheakimage" name="cheakimage"/>
                     </div>
                     <div class="col-sm-3">
-                        <img style="margin-top: -25px" src="${pageContext.request.contextPath}/checkImageServlet" />
+                        <img  id="img1"  onclick="changeimg()" style="margin-top: -25px" src="${pageContext.request.contextPath}/checkImageServlet" />
                     </div>
                 <!--3-->
                 <div class="music-lgin-text">

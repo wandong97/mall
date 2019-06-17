@@ -48,7 +48,14 @@ font {
 			<%@include file="/jsp/head.jsp" %>
 
 
+				<script>
+                    function  changeimg(){
+                        var myDate = new Date();
+                        var img =document.getElementById('img1');
+                        img.src="${pageContext.request.contextPath}/checkImageServlet?ran=" + Math.random();
+                    }
 
+				</script>
 
 
 <div class="container" style="width:100%;background:url('${pageContext.request.contextPath}/image/regist_bg.jpg');">
@@ -61,8 +68,7 @@ font {
 
 	<div class="col-md-8" style="background:#fff;padding:40px 80px;margin:30px;border:7px solid #ccc;">
 		<font>会员注册</font>USER REGISTER
-		<form class="form-horizontal" style="margin-top:5px;" method="post" action="${pageContext.request.contextPath }/userServlet">
-			<input type="hidden" name="userTodo" value="register">
+		<form class="form-horizontal" style="margin-top:5px;" method="post" action="${pageContext.request.contextPath }/user/register">
 			 <div class="form-group">
 			    <label for="username" class="col-sm-2 control-label">用户名</label>
 			    <div class="col-sm-6">
@@ -118,7 +124,7 @@ font {
 			      
 			    </div>
 			    <div class="col-sm-2">
-			    <img src="${pageContext.request.contextPath}/checkImageServlet"/>
+			    <img id="img1"  onclick="changeimg()" src="${pageContext.request.contextPath}/checkImageServlet"/>
 			    </div>
 			    
 			  </div>
